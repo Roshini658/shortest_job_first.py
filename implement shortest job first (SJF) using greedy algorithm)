@@ -1,0 +1,12 @@
+
+class Solution:
+    def solve(self, bt):
+        bt.sort()                 # Sort burst times from smallest to largest
+        waiting = 0               # Total waiting time
+        current = 0               # Time spent executing previous processes
+
+        for i in range(len(bt)):  # Visit every process
+            waiting += current    # Add this process's waiting time
+            current += bt[i]     # Finish this process
+
+        return waiting // len(bt) # Return the floor of average waiting time
